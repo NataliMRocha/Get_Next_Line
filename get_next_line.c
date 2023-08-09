@@ -17,17 +17,14 @@ char	*get_next_line(int fd)
 	static size_t	nb_read;
 	static char		*buffer;
 	char		*leitura_1;
-	char		*leitura_2;
+	static char		*leitura_2;
 	char		*concatenada;
 	size_t	i = 0;
-	size_t	size_str = 0;
 
 	buffer = (char *)ft_calloc(BUFFER_SIZE + 1 , sizeof(char));
-	//Caso eu leia menos do que o buffer size, mudo buffer size para nb_read
 	nb_read = read(fd, buffer, BUFFER_SIZE);
 	if (nb_read == -1)
 		return (1);
-	//checo: nessa leitura eu achei um \n ?
 	while(i <= nb_read)
 	{
 		if (buffer[i] == '\n')
@@ -35,38 +32,46 @@ char	*get_next_line(int fd)
 		else
 			i++;
 	}
-	//maloco espaço pra uma string de tamanho i, copio do buffer para essa nova string
 	*leitura_1 = (char *)ft_calloc((i + 1), sizeof(char));
 	ft_strlcpy(leitura_1, buffer, i);
-	//se sim: sei q len da linha até o \n = i
-	//dou free no buffer ??
-	//ando o ponteiro do buffer até onde achei o \n
-	//se existe \n e i < nb_read preciso salvar o que li após o \n em uma string
-	//retorno a nova string
+	if (i = nb_read)
+		free(buffer);
+		return (leitura_1);
+	if (i < nb_read)
+		*buffer = buffer + i;
+		leitura_2 = (char *)ft_calloc(((buffer - i) + 1), sizeof(char));
+		ft_strlcpy(leitura_2, buffer, (buffer - i));
+		return (leitura_1);
 
-	//se não:
-	//andei até o fim do que li e não achei a linha
 	if (i > nb_read)
 	{
 		while(read)
-		*leitura_2 = (char *)ft_calloc(BUFFER_SIZE, sizeof(char));
-		nb_read = read(fd, buffer, BUFFER_SIZE);
-		i = 0;
-		while(i <= nb_read)
 		{
-			if (buffer[i] == '\n')
-				break;
-			else
-			i++;
+			nb_read = read(fd, buffer, BUFFER_SIZE);
+			if (read == -1)
+			{
+				free(leitura_1);
+				free (buffer);
+				return(1);
+			}
+			i = 0;
+			while(i <= nb_read)
+			{
+				if (buffer[i] == '\n')
+					break;
+				else
+					i++;
+			}
+			*leitura_2 = (char *)ft_calloc((i + 1), sizeof(char));
+			ft_strlcpy(leitura_2, buffer, i);
+			concatenada = ft_strjoin(leitura_1, leitura_2);
+			free(leitura_1);
+			free(leitura_2);
 		}
-		ft_strlcpy(leitura_2, buffer, i);
-		concatenada = ft_strjoin(leitura_1, leitura_1);
-		//se i < nb_read preciso pegar o resto da string e copiar numa string e salvar
-		
-	}	
+	}
 	close(fd);
-	//retorno a string
-}
+	}
+
 
 int	main(void)
 {
