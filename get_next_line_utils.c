@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:46:38 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/09 19:20:59 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:13:43 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ft_bzero(void *s, size_t n)
-{
-	char	*c;
-
-	c = s;
-	while (n-- > 0)
-	{
-		*c = '\0';
-		c++;
-	}
-}
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*alloc_mem;
+	char	*alloc_mem;
 	size_t	total_size;
 
 	total_size = nmemb * size;
@@ -39,8 +27,12 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	alloc_mem = malloc(total_size);
 	if (!alloc_mem)
 		return (NULL);
-	ft_bzero(alloc_mem, total_size);
-	return (alloc_mem);
+	while (total_size-- > 0)
+	{
+		*alloc_mem = '\0';
+		alloc_mem++;
+	}
+	return ((void *)alloc_mem);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -77,4 +69,27 @@ char	*ft_strdup(const char *s)
 		i++;
 	}
 	return (strdup);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	length;
+
+	length = 0;
+	while (s[length] != '\0')
+		length++;
+	return (length);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (unsigned char)c)
+		return ((char *)s);
+	return (NULL);
 }

@@ -6,9 +6,11 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:29:04 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/09 17:06:17 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:59:54 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#define BUFFER_SIZE 10
 
 char	*get_next_line(int fd)
 {
@@ -70,13 +72,4 @@ char	*get_next_line(int fd)
 	close(fd);
 }
 
-int	main(void)
-{
-	int		fd;
-	char	*line;
 
-	fd = open("/nfs/homes/namoreir/Get_Next_Line/teste.txt", O_RDONLY);
-	if (fd == -1)
-		return (1);
-	line = get_next_line(fd);
-}
