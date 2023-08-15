@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:58:48 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/15 17:18:54 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:28:15 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ int	main(void)
 	int		fd;
 	char	*line;
 
+	line = NULL;
 	fd = open("/nfs/homes/namoreir/Get_Next_Line/teste.txt", O_RDONLY);
-	while(1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s", line);
-		free(line);
-	}
+	if (fd == -1)
+		return (1);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
 }
