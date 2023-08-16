@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:14:50 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/15 22:58:39 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/15 23:35:26 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlen(const char *s)
 char	*ft_strchr(const char *s, int c)
 {
 	if (s == NULL)
-		return(NULL);
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (unsigned char)c)

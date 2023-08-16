@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:17:12 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/15 23:07:20 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/15 23:34:55 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static char	*get_line(char *buffer, char *backup, int fd)
 {
 	size_t	nb_read;
 	char	*temp;
-	
+
 	nb_read = 1;
 	temp = NULL;
-	while(nb_read != 0)
+	while (nb_read != 0)
 	{
 		nb_read = read(fd, buffer, BUFFER_SIZE);
 		if (nb_read == -1)
@@ -35,8 +35,9 @@ static char	*get_line(char *buffer, char *backup, int fd)
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	return(backup);
+	return (backup);
 }
+
 static char	*ft_free(char *buffer, char *line)
 {
 	if (line == NULL || *line == '\0')
@@ -48,6 +49,7 @@ static char	*ft_free(char *buffer, char *line)
 	buffer = NULL;
 	return (line);
 }
+
 static char	*ft_backup(char *line)
 {
 	size_t	i;
@@ -83,5 +85,5 @@ char	*get_next_line(int fd)
 		free(backup);
 		backup = NULL;
 	}
-	return(ft_free(buffer, line));
-}	
+	return (ft_free(buffer, line));
+}
