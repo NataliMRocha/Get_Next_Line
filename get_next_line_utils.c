@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:14:50 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/15 23:35:26 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/16 14:37:14 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_strdup(const char *s)
 	if (strdup == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len + 1)
+	while (i < len)
 	{
 		strdup[i] = s[i];
 		i++;

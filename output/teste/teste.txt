@@ -1,3 +1,0 @@
-linha 1\n
-linha 2 é maior\n
-linha 3 é maior ainda\n
