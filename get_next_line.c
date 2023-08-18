@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:17:12 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/18 10:41:04 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/18 10:41:37 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = get_line(buffer, backup, fd);
 	if (line == NULL && backup)
-		free(backup);S
+		free(backup);
 	backup = ft_backup(line);
 	return (ft_free(buffer, line));
 }
