@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 10:17:12 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/16 14:41:27 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:02:22 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*get_line(char *buffer, char *backup, int fd)
 
 	nb_read = 1;
 	temp = NULL;
-	while (nb_read != 0)
+	while (nb_read > 0)
 	{
 		nb_read = read(fd, buffer, BUFFER_SIZE);
 		if (nb_read == -1)
@@ -79,6 +79,8 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = get_line(buffer, backup, fd);
+	if (line == NULL && backup)
+		free(backup);
 	backup = ft_backup(line);
 	if (!ft_strchr(line, '\n') || (backup != NULL && !(*backup)))
 	{
