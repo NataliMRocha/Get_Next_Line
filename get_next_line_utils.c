@@ -3,75 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 18:14:50 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/17 18:20:33 by natali           ###   ########.fr       */
+/*   Created: 2023/08/19 14:45:17 by namoreir          #+#    #+#             */
+/*   Updated: 2023/08/21 11:32:38 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+t_list	*get_char_node(char c)
 {
-	size_t	length;
+	t_list	*set;
 
-	if (s == NULL)
-		return (0);
-	length = 0;
-	while (s[length] != '\0')
-		length++;
-	return (length);
+	set = (t_list *)malloc(sizeof(t_list));
+	set->char_read = c;
+	set->next = NULL;
+	return (set);
 }
 
-char	*ft_strchr(const char *s, int c)
+void	put_in_pos(t_list **lst, t_list *new)
 {
-	if (s == NULL)
-		return (NULL);
-	while (*s)
+	t_list	*temp;
+
+	if (!new)
+		return ;
+	if (!*lst)
 	{
-		if (*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
+		*lst = new;
+		return ;
 	}
-	if (*s == (unsigned char)c)
-		return ((char *)s);
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
+}
+
+char	*free_file(t_list *line)
+{
+	t_list	*temp;
+
+	temp = line;
+	while (temp)
+	{
+		temp = temp->next;
+		free(line);
+		line = temp;
+	}
+	temp = NULL;
 	return (NULL);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	size_t	len;
-	char	*strdup;
-
-	len = ft_strlen(s);
-	strdup = (char *)malloc((len + 1) * sizeof(char));
-	if (strdup == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		strdup[i] = s[i];
-		i++;
-	}
-	strdup[i] = '\0';
-	return (strdup);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*new_str;
-	size_t	total_size;
-
-	total_size = ft_strlen(s1) + ft_strlen(s2);
-	new_str = (char *)malloc((total_size + 1) * sizeof(char));
-	if (new_str == NULL)
-		return (NULL);
-	while (s1 && *s1 != '\0')
-		*new_str++ = *s1++;
-	while (s2 && *s2 != '\0')
-		*new_str++ = *s2++;
-	*new_str = '\0';
-	return ((new_str - total_size));
 }
