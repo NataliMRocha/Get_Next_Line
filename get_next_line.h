@@ -3,28 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 10:47:41 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/17 18:57:56 by natali           ###   ########.fr       */
+/*   Created: 2023/08/19 10:39:04 by namoreir          #+#    #+#             */
+/*   Updated: 2023/08/21 11:31:07 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
+typedef struct s_list	t_list;
+struct s_list{
+	char	char_read;
+	t_list	*next;
+};
 
-char		*get_next_line(int fd);
-size_t		ft_strlen(const char *s);
-char		*ft_strchr(const char *s, int c);
-char		*ft_strdup(const char *s);
-char		*ft_strjoin(char const *s1, char const *s2);
+t_list			*get_char_node(char c);
+void			put_in_pos(t_list **lst, t_list *new);
+char			*free_file(t_list *line);
+
+typedef struct s_file{
+	int			pos;
+	int			nb_read;
+	int			len;
+	int			fd;
+	char		buf[BUFFER_SIZE];
+	t_list		*line;
+}t_file;
+
+char			*get_next_line(int fd);
+char			*read_line(t_file *file);
+char			*get_current_line(t_file *file);
 
 #endif
