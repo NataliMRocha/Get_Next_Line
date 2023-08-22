@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 10:39:04 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/22 19:53:46 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:01:08 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 #  define BUFFER_SIZE 10
 # endif
 
+/**@param char_read the character stored
+ * @param next the pointer to the next node
+ * */
 typedef struct s_list	t_list;
 struct s_list{
 	char	char_read;
@@ -49,6 +52,13 @@ void			put_in_pos(t_list **lst, t_list *new);
  * */
 char			*free_file(t_list *line);
 
+/**@param pos the current position in buf
+ * @param nb_read the amount of bytes read of buf
+ * @param len the size of string
+ * @param fd the number of a file descriptor received as parameter
+ * @param buf the string to store wath haved read to file
+ * @param line the struct where the line will be storaged
+ * */
 typedef struct s_file{
 	int			pos;
 	int			nb_read;
