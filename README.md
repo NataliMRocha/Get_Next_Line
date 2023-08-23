@@ -1,6 +1,6 @@
 # :clipboard: Get_Next_Line | 42 SP
-- Actual Status : finished with bonus
-- Result        : pengind evaluation
+- Actual Status : finished.
+- Result        : Approved with 125 points by moulinette (the 42 tester) ✅
 
   GNL is the second project at 42.
   The aim of this project is to write a function that reads a file of buffer size specified by the user parameter and returns only one line each time the function is called.
