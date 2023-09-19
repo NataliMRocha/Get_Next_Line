@@ -6,11 +6,11 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:14:05 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/23 22:09:36 by natali           ###   ########.fr       */
+/*   Updated: 2023/09/18 21:09:27 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
 
